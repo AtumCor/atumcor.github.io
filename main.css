@@ -1,0 +1,221 @@
+:root {
+
+    --deep-blue: #17223B;
+    --morning-blue: #263859;
+    --light-blue: #6B778D;
+    --pink-red: #FF6768;
+    --light-grey: #a8aabe;
+  
+  }
+  
+  body {
+    font-family: RobotoSlab, sans-serif;
+    background-color: var(--morning-blue);
+    color: var(--light-grey);
+    margin: 0;
+    padding: 0;
+  
+  }
+  
+  header {
+    background-color: var(--deep-blue);
+    color: var(--light-grey);
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  .profile {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--morning-blue);
+  }
+  
+  .name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    width: auto;
+  }
+  
+  .name h1 {
+    margin-top: 40%;
+    font-size: 96px;
+  }
+  
+  .picture img {
+    padding-top: 20%;
+    width: 100%; /* adjust the size as needed */
+    height: 100%; /* adjust the size as needed */
+    border-radius: 10%; /* makes the image round */
+    bottom:0px;
+  }
+  
+  nav {
+    background-color: var(--morning-blue);
+    border-bottom: 2px solid var(--deep-blue);
+    padding: 10px;
+    text-align: center;
+  }
+  
+  nav a {
+    display: inline-block;
+    padding: 10px;
+    color: var(--light-grey);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  nav a:hover {
+    background-color: var(--pink-red);
+  }
+  
+  section {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-size: 36px;
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  p {
+    line-height: 1.5;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  footer {
+    background-color: var(--deep-blue);
+    color: var(--light-grey);
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .profile-picture-small {
+    border: 2px solid var(--light-blue);
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: auto;
+  }
+  
+  @keyframes rainbow {
+    0% {
+      background-color: red;
+    }
+  
+    10% {
+      background-color: orange;
+    }
+  
+    20% {
+      background-color: yellow;
+    }
+  
+    30% {
+      background-color: green;
+    }
+  
+    40% {
+      background-color: blue;
+    }
+  
+    50% {
+      background-color: purple;
+    }
+  
+    60% {
+      background-color: blue;
+    }
+  
+    70% {
+      background-color: green;
+    }
+  
+    80% {
+      background-color: yellow;
+    }
+  
+    90% {
+      background-color: orange;
+    }
+    100% {
+      background-color: red;
+    }
+  }
+  
+  .profile-picture-small:hover {
+    box-shadow: 0 0 5px 5px rgba(0, 140, 186, 0.5);
+    position: relative;
+    animation: rainbow 5s infinite;
+  }
+  
+  .profile-picture-small:active {
+    scale: 200%;
+  }
+  
+  .color-block {
+  
+    height: 300px;
+    width: 300px;
+  
+  }
+  
+  .triangle-1 {
+    margin-left: 45%;
+    margin-top: -10%;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 70px solid var(--deep-blue);
+    z-index: 10;
+    rotate: 45deg;
+  }
+  
+  .triangle-2 {
+    margin-left: 40%;
+    margin-top: 15%;
+    width: 0;
+    height: 0;
+    border-left: 70px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 25px solid var(--light-blue);
+    z-index: 10;
+    rotate: 45deg;
+  }
+  .triangle-3 {
+    margin-left: 90%;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 45px solid var(--light-grey);
+    z-index: 10;
+    rotate: 45deg;
+  }
+  .triangle-4 {
+    margin-left: 80%;
+    margin-top: -20%;
+    width: 0;
+    height: 0;
+    border-left: 85px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 85px solid var(--light-blue);
+    z-index: -10;
+    rotate: 35deg;
+  }
