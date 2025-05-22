@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;
+    }
+
+    .container::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+
+    .slides {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      scroll-snap-align: start;
+      flex-direction: column;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    body,
+    html {
+      height: 100%;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      overflow: hidden
+    }
+
+    .hero {
+      background-image: url('/images/Background.jpg');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+    }
+
+    .name {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .about {
+      padding: 80px 20px;
+      background-color: #1e1e1e;
+      color: #ddd;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .skills {
+      padding: 80px 20px;
+      background-color: #2a2a2a;
+      color: #f0f0f0;
+    }
+
+    .skills h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .skills ul {
+      list-style: none;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .skills li {
+      background-color: #444;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 1.1rem;
+    }
+
+    .fun{
+      padding: 80px 20px;
+      background-color: #1e1e1e;
+      color: #ddd;
+    }
+
+    .fun h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact {
+      padding: 80px 20px;
+      background-color: #333;
+      color: #ddd;
+    }
+
+    .contact p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact a {
+      color: #00aaff;
+      text-decoration: none;
+    }
+
+    .menu-slide {
+      background: #222;
+      color: white;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .menu-slide h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .menu-slide a {
+      font-size: 1.6rem;
+      color: #00aaff;
+      text-decoration: none;
+      border: 2px solid #00aaff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      max-width: 300px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .menu-slide a:hover {
+      background-color: #00aaff;
+      color: white;
+    }
+
+    .left-menu {
+      position: fixed;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-radius: 8px;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.1s ease;
+    }
+
+    .left-menu.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .left-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      background: #444;
+      transition: background 0.3s ease;
+    }
+
+    .left-menu a:hover {
+      background: #666;
+    }
+
+    .left-menu a.active {
+      background-color: #00aaff;
+      color: white;
+    }
+
+
+    @media (max-width: 600px) {
+      .name {
+        font-size: 2rem;
+      }
+
+      .profile-pic {
+        width: 200px;
+        height: 200px;
+      }
+
+      .about h2,
+      .skills h2 {
+        font-size: 2rem;
+      }
+
+      .about p {
+        font-size: 1rem;
+      }
+
+      .left-menu {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="leftMenu" class="left-menu">
+    <a href="#about">About Me</a>
+    <a href="#skills">Skills</a>
+    <a href="#fun-projects">Fun Side Projects</a>
+    <a href="#contact">Contact Me</a>
+
+  </nav>
+
+  <div class="container">
+    <section class="hero slides" id="hero">
+      <div class="overlay"></div>
+      <div class="content">
+        <img src="/images/Main Photo.jpg" alt="Your Photo" class="profile-pic" />
+        <div class="name">Jiaming Meng</div>
+      </div>
+    </section>
+
+    <section id="about" class="about slides">
+      <h2>Welcome to my Portfolio</h2>
+      <p>I'm a Bachelor Student at the Ohio State University, majoring in Computer Science and Mathematics. 
+        Through my academic journey, I am constantly seeking opportunities to apply my knowledge to solve real-world problems. 
+        I have a passion for All things science and Math. I enjoy using the knowledge I have to create/solve problems but also have some fun with it.</p>
+      </p>
+    </section>
+
+    <section id="skills" class="skills slides">
+      <h2>Professional Skills</h2>
+      <ul>
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>HTML & CSS</li>
+        <li>React</li>
+        <li>Node.js</li>
+        <li>Git & GitHub</li>
+        <li>REST APIs</li>
+        <li>SQL</li>
+        <li>Agile Methodologies</li>
+        <li>UI/UX Design</li>
+      </ul>
+    </section>
+
+    <section id="fun-projects" class="fun slides" style="background:#1e1e1e;">
+      <h2>Fun Side Projects</h2>
+      <ul style="max-width: 800px; margin: 0 auto; text-align: left; font-size:1.1rem; line-height:1.5;">
+        <li>Portfolio Website – Built using HTML, CSS, and JavaScript.</li>
+        <li>2D Platformer Game with Phaser.js.</li>
+        <li>Chatbot using Python and NLP libraries.</li>
+        <li>Factorio Rocket Launch Calculator using React and Typescript.</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="contact slides" style="background:#2e2e2e;">
+      <h2> Contact Me</h2>
+      <p><i class="fa-solid fa-envelope"></i> <a href="mailto:j.meng1024@gmail.com">j.meng1024@gmail.com</a></p>
+      <p><i class="fa-solid fa-phone"></i> <a href="tel:+16087728016">+1 608 772 8016</a></p>
+      <p><i class="fas fa-file-download"></i> <a class="icon-link" href="/resume.pdf" download title="Download Resume">
+        Resume</a></p>
+        <div style="size: 3rem;">
+          <p><a class="icon-link" href="https://github.com/atumcor" target="_blank" title="GitHub">
+              <i class="fab fa-github"></i></a>
+            <a class="icon-link" href="https://www.instagram.com/atumcor/#" target="_blank" title="Instagram"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a class="icon-link" href="https://www.linkedin.com/in/jiaming-meng-3854b925b/" target="_blank"
+              title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </p>
+
+        </div>
+    </section>
+  </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const leftMenu = document.getElementById('leftMenu');
+    const scrollContainer = document.querySelector('.container');
+    const heroHeight = window.innerHeight;
+    const sections = document.querySelectorAll('section');
+    const menuLinks = document.querySelectorAll('.left-menu a[href^="#"]');
+
+    scrollContainer.addEventListener('scroll', () => {
+      // Show/hide left menu
+      if (scrollContainer.scrollTop >= heroHeight * 0.9) {
+        leftMenu.classList.add('visible');
+      } else {
+        leftMenu.classList.remove('visible');
+      }
+
+      // Highlight active link
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        const bottom = top + section.offsetHeight;
+        if (scrollContainer.scrollTop >= top && scrollContainer.scrollTop < bottom) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      menuLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('.left-menu a, .menu-slide a').forEach(link => {
+      link.addEventListener('click', e => {
+        if (link.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const targetID = link.getAttribute('href').substring(1);
+          const target = document.getElementById(targetID);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+
+</html>
