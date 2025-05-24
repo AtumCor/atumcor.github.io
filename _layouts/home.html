@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name</title>
+  <title>Jerry's Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
@@ -19,12 +19,14 @@
       height: 100vh;
       overflow-y: scroll;
       scroll-snap-type: y mandatory;
-      scrollbar-width: none; /* Firefox */
+      scrollbar-width: none;
+      /* Firefox */
       -ms-overflow-style: none;
     }
 
     .container::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
+      display: none;
+      /* Chrome, Safari, Opera */
     }
 
     .slides {
@@ -81,6 +83,7 @@
       z-index: 2;
       display: flex;
       align-items: center;
+      flex-direction: column;
       gap: 20px;
     }
 
@@ -144,13 +147,13 @@
       font-size: 1.1rem;
     }
 
-    .fun{
+    .projects {
       padding: 80px 20px;
       background-color: #1e1e1e;
       color: #ddd;
     }
 
-    .fun h2 {
+    .projects h2 {
       font-size: 2.5rem;
       margin-bottom: 20px;
     }
@@ -252,6 +255,36 @@
       color: white;
     }
 
+    .right-button {
+      position: fixed;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      background-color: #00aaff;
+      color: white;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      transition: opacity 0.3s ease;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .right-button:hover {
+      background-color: #008fcc;
+    }
+
+    .right-button.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
 
     @media (max-width: 600px) {
       .name {
@@ -275,6 +308,10 @@
       .left-menu {
         display: none !important;
       }
+
+      .right-button {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -283,13 +320,14 @@
   <nav id="leftMenu" class="left-menu">
     <a href="#about">About Me</a>
     <a href="#skills">Skills</a>
-    <a href="#fun-projects">Fun Side Projects</a>
+    <a href="#projects">Fun Side Projects</a>
     <a href="#contact">Contact Me</a>
-
   </nav>
 
+  <a id="dynamicButton" class="right-button visible" href="">More</a>
+
   <div class="container">
-    <section class="hero slides" id="hero">
+    <section id="hero" class="hero slides">
       <div class="overlay"></div>
       <div class="content">
         <img src="/images/Main Photo.jpg" alt="Your Photo" class="profile-pic" />
@@ -299,35 +337,43 @@
 
     <section id="about" class="about slides">
       <h2>Welcome to my Portfolio</h2>
-      <p>I'm a Bachelor Student at the Ohio State University, majoring in Computer Science and Mathematics. 
-        Through my academic journey, I am constantly seeking opportunities to apply my knowledge to solve real-world problems. 
-        I have a passion for All things science and Math. I enjoy using the knowledge I have to create/solve problems but also have some fun with it.</p>
+      <p>I'm a Bachelor Student at the Ohio State University, majoring in Computer Science and Mathematics.
+        Through my academic journey, I am constantly seeking opportunities to apply my knowledge to solve real-world
+        problems.
+        I have a passion for All things science and Math. I enjoy using the knowledge I have to create/solve problems
+        but also have some fun with it.</p>
       </p>
     </section>
 
     <section id="skills" class="skills slides">
-      <h2>Professional Skills</h2>
+      <h2>Techinical Skills</h2>
       <ul>
+        <li>HTML & CSS</li>
         <li>JavaScript</li>
         <li>Python</li>
-        <li>HTML & CSS</li>
-        <li>React</li>
-        <li>Node.js</li>
         <li>Git & GitHub</li>
-        <li>REST APIs</li>
-        <li>SQL</li>
-        <li>Agile Methodologies</li>
-        <li>UI/UX Design</li>
+        <li>C & C++</li>
+        <li>Java</li>
       </ul>
+      <h2>Other Skills</h2>
+      <ul>
+        <li>Chinese Fluent Bilangual</li>
+        <li>Japanese Novice</li>
+        <li>Problem Solving</li>
+        <li>Team Collaboration</li>
+        <li>Time Management</li>
+      </ul>
+
     </section>
 
-    <section id="fun-projects" class="fun slides" style="background:#1e1e1e;">
+    <section id="projects" class="projects slides" style="background:#1e1e1e;">
       <h2>Fun Side Projects</h2>
       <ul style="max-width: 800px; margin: 0 auto; text-align: left; font-size:1.1rem; line-height:1.5;">
         <li>Portfolio Website – Built using HTML, CSS, and JavaScript.</li>
-        <li>2D Platformer Game with Phaser.js.</li>
-        <li>Chatbot using Python and NLP libraries.</li>
-        <li>Factorio Rocket Launch Calculator using React and Typescript.</li>
+        <li>Lambda Phi Epsilon Organization Website: <a href="https://www.tosulambdas.com/" style="color: #008fcc;">tosulambdas.com</a></li>
+        <li>(WIP) Source based movement platformer</li>
+        <li>(WIP) Factorio Rocket Launch Calculator using React and Typescript.</li>
+        <li>(WIP) Collection of small but useful desktop macros</li>
       </ul>
     </section>
 
@@ -336,69 +382,121 @@
       <p><i class="fa-solid fa-envelope"></i> <a href="mailto:j.meng1024@gmail.com">j.meng1024@gmail.com</a></p>
       <p><i class="fa-solid fa-phone"></i> <a href="tel:+16087728016">+1 608 772 8016</a></p>
       <p><i class="fas fa-file-download"></i> <a class="icon-link" href="/resume.pdf" download title="Download Resume">
-        Resume</a></p>
-        <div style="size: 3rem;">
-          <p><a class="icon-link" href="https://github.com/atumcor" target="_blank" title="GitHub">
-              <i class="fab fa-github"></i></a>
-            <a class="icon-link" href="https://www.instagram.com/atumcor/#" target="_blank" title="Instagram"><i
-                class="fa-brands fa-instagram"></i></a>
-            <a class="icon-link" href="https://www.linkedin.com/in/jiaming-meng-3854b925b/" target="_blank"
-              title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          </p>
-
-        </div>
+          Resume</a></p>
+      <div style="size: 3rem;">
+        <p>
+          <a class="icon-link" href="https://github.com/atumcor" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i></a>
+          <a class="icon-link" href="https://www.instagram.com/atumcor/#" target="_blank" title="Instagram"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a class="icon-link" href="https://www.linkedin.com/in/jiaming-meng-3854b925b/" target="_blank"
+            title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </p>
+      </div>
     </section>
   </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const leftMenu = document.getElementById('leftMenu');
-    const scrollContainer = document.querySelector('.container');
-    const heroHeight = window.innerHeight;
-    const sections = document.querySelectorAll('section');
-    const menuLinks = document.querySelectorAll('.left-menu a[href^="#"]');
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const leftMenu = document.getElementById('leftMenu');
+      const rightButton = document.querySelector('.right-button');
+      const scrollContainer = document.querySelector('.container');
+      const heroHeight = window.innerHeight;
+      const sections = document.querySelectorAll('section');
+      const menuLinks = document.querySelectorAll('.left-menu a[href^="#"]');
 
-    scrollContainer.addEventListener('scroll', () => {
-      // Show/hide left menu
-      if (scrollContainer.scrollTop >= heroHeight * 0.9) {
-        leftMenu.classList.add('visible');
-      } else {
-        leftMenu.classList.remove('visible');
-      }
-
-      // Highlight active link
-      let current = '';
-      sections.forEach(section => {
-        const top = section.offsetTop - 100;
-        const bottom = top + section.offsetHeight;
-        if (scrollContainer.scrollTop >= top && scrollContainer.scrollTop < bottom) {
-          current = section.getAttribute('id');
+      scrollContainer.addEventListener('scroll', () => {
+        // Show/hide left menu
+        if (scrollContainer.scrollTop >= heroHeight * 0.9) {
+          leftMenu.classList.add('visible');
+          rightButton.classList.add('visible');
+        } else {
+          leftMenu.classList.remove('visible');
+          rightButton.classList.remove('visible');
         }
-      });
 
-      menuLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
-      });
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('.left-menu a, .menu-slide a').forEach(link => {
-      link.addEventListener('click', e => {
-        if (link.getAttribute('href').startsWith('#')) {
-          e.preventDefault();
-          const targetID = link.getAttribute('href').substring(1);
-          const target = document.getElementById(targetID);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
+        // Highlight active link
+        let current = '';
+        sections.forEach(section => {
+          const top = section.offsetTop - 100;
+          const bottom = top + section.offsetHeight;
+          if (scrollContainer.scrollTop >= top && scrollContainer.scrollTop < bottom) {
+            current = section.getAttribute('id');
           }
-        }
+        });
+
+        menuLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('.left-menu a, .menu-slide a').forEach(link => {
+        link.addEventListener('click', e => {
+          if (link.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+            const targetID = link.getAttribute('href').substring(1);
+            const target = document.getElementById(targetID);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
       });
     });
-  });
-</script>
+
+    const scrollContainer = document.querySelector('.container');
+    const button = document.getElementById("dynamicButton");
+    const slides = document.getElementsByClassName("slides");
+
+    const slideLinks = {
+      about: "/about/",
+      skills: "/skills/index.md",
+      projects: "/projects/index.md",
+      contact: "/contact/index.md"
+    };
+
+    function updateButton() {
+      let visibleSlide = null;
+      let maxVisibleHeight = 0;
+
+      Array.from(slides).forEach(slide => {
+        const rect = slide.getBoundingClientRect();
+        const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+
+        if (visibleHeight > maxVisibleHeight) {
+          maxVisibleHeight = visibleHeight;
+          visibleSlide = slide;
+        }
+      });
+
+      if (visibleSlide) {
+        const slideId = visibleSlide.id;
+
+        // Hide button for skills or contact slides
+        if (slideId === "skills" || slideId === "contact" || slideId === "hero") {
+          button.classList.remove("visible");
+          button.style.opacity = '0';
+        } else {
+          button.href = slideLinks[slideId] || "#";
+          button.textContent = `Go To ${slideId.charAt(0).toUpperCase() + slideId.slice(1)}`;
+          button.classList.add("visible");
+          button.style.opacity = '1';
+        }
+      } else {
+        button.classList.remove("visible");
+      }
+    }
+
+    // Listen on the container if it's scrollable, else listen on window
+    scrollContainer.addEventListener("scroll", updateButton);
+    window.addEventListener("load", updateButton);
+
+
+  </script>
 
 </body>
 
