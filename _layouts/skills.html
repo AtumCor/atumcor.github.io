@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Skills</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #aaaaaa;
+        }
+
+        .skills {
+            margin-bottom: 30px;
+        }
+
+        .skills h2 {
+            font-size: 1.8rem;
+            color: #00aaff;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .skills ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .skills ul li {
+            padding: 8px 0;
+            font-size: 1.1rem;
+            border-bottom: 1px dashed #333;
+        }
+
+        .skills ul li:last-child {
+            border-bottom: none;
+        }
+
+        .back-link-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            margin-top: 2rem;
+            display: inline-block;
+            color: #00aaff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid #00aaff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #00aaff;
+            color: #121212;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <section class="skills">
+            <h2>💻 Technical Skills</h2>
+            <ul>
+                <li><strong>Languages:</strong> Python, JavaScript, C++, Java</li>
+                <li><strong>Web:</strong> HTML, CSS, Jekyll</li>
+                <li><strong>Tools:</strong> Git, Docker, VS Code</li>
+                <!-- <li><strong>Databases:</strong> MySQL, MongoDB</li> -->
+            </ul>
+        </section>
+
+        <section class="skills soft-skills">
+            <h2>🧠 Soft Skills</h2>
+            <ul>
+                <li>Effective Communication</li>
+                <li>Problem Solving</li>
+                <li>Team Collaboration</li>
+                <li>Adaptability</li>
+                <li>Time Management</li>
+            </ul>
+        </section>
+
+        <section class="skills hobbies">
+            <h2>🎨 Hobbies & Related Interests</h2>
+            <ul>
+                <li>🎮 Game Development (Unity, pixel art)</li>
+                <li>📸 Digital Photography (Editing with Lightroom)</li>
+                <li>📚 Reading Tech Blogs & Books</li>
+                <li>🧩 Puzzle Solving & Logic Games</li>
+                <li>🎵 Music Production (DAWs, Synths)</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <div class="back-link-wrapper">
+        <a href="../#skills" class="back-link">← Back to Home</a>
+    </div>
+
+
+    {% include footer.html %}
+</body>
+
+</html>

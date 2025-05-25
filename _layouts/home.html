@@ -158,26 +158,54 @@
       margin-bottom: 20px;
     }
 
-    .contact {
-      padding: 80px 20px;
-      background-color: #333;
+    .contact-input {
+      width: 100%;
+      padding: 12px;
+      background-color: #222;
+      border: 1px solid #555;
+      color: #e0e0e0;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .contact-input:focus {
+      outline: none;
+      border-color: #00aaff;
+      background-color: #2a2a2a;
+    }
+
+    .contact-button {
+      padding: 12px;
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-button:hover {
+      background-color: #008fcc;
+    }
+
+    .contact p{
+      margin: 10px 0;
+      font-size: 1.5rem;
       color: #ddd;
-    }
-
-    .contact p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-
-    .contact h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
     }
 
     .contact a {
       color: #00aaff;
       text-decoration: none;
     }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
 
     .menu-slide {
       background: #222;
@@ -228,7 +256,7 @@
       z-index: 1000;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.1s ease;
+      transition: opacity 0.3s ease;
     }
 
     .left-menu.visible {
@@ -324,7 +352,7 @@
     <a href="#contact">Contact Me</a>
   </nav>
 
-  <a id="dynamicButton" class="right-button visible" href="">More</a>
+  <a id="dynamicButton" class="right-button" href="">More</a>
 
   <div class="container">
     <section id="hero" class="hero slides">
@@ -370,30 +398,39 @@
       <h2>Fun Side Projects</h2>
       <ul style="max-width: 800px; margin: 0 auto; text-align: left; font-size:1.1rem; line-height:1.5;">
         <li>Portfolio Website – Built using HTML, CSS, and JavaScript.</li>
-        <li>Lambda Phi Epsilon Organization Website: <a href="https://www.tosulambdas.com/" style="color: #008fcc;">tosulambdas.com</a></li>
+        <li>Lambda Phi Epsilon Organization Website: <a href="https://www.tosulambdas.com/"
+            style="color: #008fcc;">tosulambdas.com</a></li>
         <li>(WIP) Source based movement platformer</li>
         <li>(WIP) Factorio Rocket Launch Calculator using React and Typescript.</li>
         <li>(WIP) Collection of small but useful desktop macros</li>
       </ul>
     </section>
 
-    <section id="contact" class="contact slides" style="background:#2e2e2e;">
-      <h2> Contact Me</h2>
-      <p><i class="fa-solid fa-envelope"></i> <a href="mailto:j.meng1024@gmail.com">j.meng1024@gmail.com</a></p>
-      <p><i class="fa-solid fa-phone"></i> <a href="tel:+16087728016">+1 608 772 8016</a></p>
-      <p><i class="fas fa-file-download"></i> <a class="icon-link" href="/resume.pdf" download title="Download Resume">
-          Resume</a></p>
-      <div style="size: 3rem;">
-        <p>
-          <a class="icon-link" href="https://github.com/atumcor" target="_blank" title="GitHub">
-            <i class="fab fa-github"></i></a>
-          <a class="icon-link" href="https://www.instagram.com/atumcor/#" target="_blank" title="Instagram"><i
-              class="fa-brands fa-instagram"></i></a>
-          <a class="icon-link" href="https://www.linkedin.com/in/jiaming-meng-3854b925b/" target="_blank"
-            title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        </p>
+    <div class="slides contact" id="contact">
+      <h1 style="margin-left: 2rem;">Contact Me</h1>
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1000px; width: 100%;">
+
+        <!-- Left Side: Socials -->
+        <div style="flex: 1 1 300px; text-align: left;">
+          <p><strong>Email:</strong> <a href="mailto:j.meng1024@gmail.com">j.meng1024@gmail.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jiaming-meng-3854b925b/"
+              target="_blank">linkedin.com/in/jiaming-meng-3854b925b</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/AtumCor"
+              target="_blank">github.com/AtumCor</a></p>
+          <p><strong>Instagram:</strong> <a href="https://Instagram.com/AtumCor" target="_blank">@AtumCor</a></p>
+        </div>
+
+        <!-- Right Side: Form -->
+        <form method="post" style="flex: 2 1 400px; display: flex; flex-direction: column; gap: 15px;">
+          <input type="text" name="name" placeholder="Your Name" required class="contact-input" />
+          <input type="email" name="email" placeholder="Your Email" required class="contact-input" />
+          <textarea name="message" rows="5" placeholder="Your Message" required class="contact-input"></textarea>
+          <button type="submit" class="contact-button">Send Message</button>
+        </form>
+
       </div>
-    </section>
+    </div>
+
   </div>
 
   <script>
@@ -454,9 +491,9 @@
 
     const slideLinks = {
       about: "/about/",
-      skills: "/skills/index.md",
-      projects: "/projects/index.md",
-      contact: "/contact/index.md"
+      skills: "/skills/",
+      projects: "/projects/",
+      contact: "/contact/"
     };
 
     function updateButton() {
@@ -477,7 +514,7 @@
         const slideId = visibleSlide.id;
 
         // Hide button for skills or contact slides
-        if (slideId === "skills" || slideId === "contact" || slideId === "hero") {
+        if (slideId === "contact" || slideId === "hero") {
           button.classList.remove("visible");
           button.style.opacity = '0';
         } else {

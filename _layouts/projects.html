@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d0d0d;
+            color: #f0f0f0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: #ffffff;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #bbbbbb;
+            margin-top: 10px;
+        }
+
+        .project-section {
+            margin-bottom: 60px;
+        }
+
+        .project-section h2 {
+            font-size: 1.8rem;
+            color: #00bfff;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #cccccc;
+            line-height: 1.5;
+        }
+
+        .back-link-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #00bfff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid #00bfff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #00bfff;
+            color: #0d0d0d;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #cccccc;
+            font-size: 0.95rem;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            list-style-type: disc;
+        }
+
+        .card ul {
+            padding-left: 18px;
+            margin-top: 10px;
+            color: #bbbbbb;
+        }
+
+        .card ul li {
+            list-style-type: circle;
+            margin-bottom: 6px;
+        }
+
+        .card time {
+            display: block;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 12px;
+            font-style: italic;
+            text-align: right;
+        }
+
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+
+        <header>
+            <h1>Things I’ve Built</h1>
+            <p>Here’s a mix of professional work and side projects I’ve enjoyed creating.</p>
+        </header>
+
+        <section class="project-section">
+            <h2>Professional Work</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>HIGNN Project Intern</h3>
+                    <time datetime="2023-05">Summer 2024</time>
+                    <ul>
+                        <li>Developed a Python wrapper for a C++ backend, enhancing usability for non-experts.</li>
+                        <li>Integrated with a Hierarchical Informative Graph Neural Networks framework.</li>
+                        <li>Contributed to molecular property prediction, improving simulation efficiency.</li>
+                        <li>Collaborated with a team of researchers to bridge complex algorithms with practical
+                            applications.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>WILDHACK 12-Hour Mini Hackthon</h3>
+                    <time datetime="2023-09">Autumn 2023</time>
+                    <ul>
+                        <li>Created a Dart application to connect students with similar academic schedules.</li>
+                        <li>Implemented secure account login and real-time messaging features.</li>
+                        <li>Designed an intuitive UI for easy navigation and user engagement.</li>
+                        <li>Participated in a 12-hour hackathon, showcasing rapid development skills.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Portfolio Website</h3>
+                    <time datetime="2023-05">May 2025</time>
+                    <ul>
+                        <li>Designed and developed this portfolio website to showcase my projects and skills.</li>
+                        <li>Utilized HTML, CSS, and JavaScript for a clean, responsive design.</li>
+                        <li>Focused on user experience with easy navigation and clear project descriptions.</li>
+                        <li>Implemented best practices for web accessibility and performance.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Lambda Phi Epsilon Organization Website: <a href="https://www.tosulambdas.com/"
+                            style="color: #008fcc;">tosulambdas.com</a></h3>
+                    <time datetime="2023-09">Autumn 2023</time>
+                    <ul>
+                        <li>Developed a modern, responsive website for the Lambda Phi Epsilon fraternity.</li>
+                        <li>Implemented features like event calendars, member profiles, and news updates.</li>
+                        <li>Focused on user-friendly design and easy content management for non-technical users.</li>
+                        <li>Utilized Jekyll for static site generation, ensuring fast load times and SEO optimization.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Hobby Projects</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>(WIP) Source Movement Platformer</h3>
+                    <p>A Unity-based Platformer game with Utilizing source movement with level editor support.</p>
+                </div>
+                <div class="card">
+                    <h3>(WIP) Factorio Mod</h3>
+                    <p>Factorio Rocket Launch Calculator using React and Typescript.</p>
+                </div>
+                <div class="card">
+                    <h3>(WIP)Desktop Macro Collection</h3>
+                    <p>A collection of desktop macros for various games, enhancing gameplay efficiency.</p>
+                </div>
+            </div>
+        </section>
+                <div class="back-link-wrapper">
+            <a href="../" class="back-link">← Back to Home</a>
+        </div>
+    </div>
+</body>
+
+</html>
