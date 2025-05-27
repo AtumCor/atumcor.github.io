@@ -406,30 +406,34 @@
       </ul>
     </section>
 
-    <div class="slides contact" id="contact">
-      <h1 style="margin-left: 2rem;">Contact Me</h1>
-      <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1000px; width: 100%;">
+<div class="slides contact" id="contact">
+  <h1 style="margin-left: 2rem;">Contact Me</h1>
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1000px; width: 100%;">
 
-        <!-- Left Side: Socials -->
-        <div style="flex: 1 1 300px; text-align: left;">
-          <p><strong>Email:</strong> <a href="mailto:j.meng1024@gmail.com">j.meng1024@gmail.com</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jiaming-meng-3854b925b/"
-              target="_blank">linkedin.com/in/jiaming-meng-3854b925b</a></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/AtumCor"
-              target="_blank">github.com/AtumCor</a></p>
-          <p><strong>Instagram:</strong> <a href="https://Instagram.com/AtumCor" target="_blank">@AtumCor</a></p>
-        </div>
-
-        <!-- Right Side: Form -->
-        <form method="post" style="flex: 2 1 400px; display: flex; flex-direction: column; gap: 15px;">
-          <input type="text" name="name" placeholder="Your Name" required class="contact-input" />
-          <input type="email" name="email" placeholder="Your Email" required class="contact-input" />
-          <textarea name="message" rows="5" placeholder="Your Message" required class="contact-input"></textarea>
-          <button type="submit" class="contact-button">Send Message</button>
-        </form>
-
-      </div>
+    <!-- Left Side: Socials -->
+    <div style="flex: 1 1 300px; text-align: left;">
+      <p><strong>Email:</strong> <a href="mailto:j.meng1024@gmail.com">j.meng1024@gmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jiaming-meng-3854b925b/"
+          target="_blank">linkedin.com/in/jiaming-meng-3854b925b</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/AtumCor" target="_blank">github.com/AtumCor</a></p>
+      <p><strong>Instagram:</strong> <a href="https://Instagram.com/AtumCor" target="_blank">@AtumCor</a></p>
     </div>
+
+    <!-- Right Side: Contact Form using Formsubmit -->
+    <form action="https://formsubmit.co/j.meng1024@gmail.com" method="POST" style="flex: 2 1 400px; display: flex; flex-direction: column; gap: 15px;">
+      <!-- Optional Settings -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Form Inputs -->
+      <input type="text" name="name" placeholder="Your Name" required class="contact-input" />
+      <input type="email" name="email" placeholder="Your Email" required class="contact-input" />
+      <textarea name="message" rows="5" placeholder="Your Message" required class="contact-input"></textarea>
+      <button type="submit" class="contact-button">Send Message</button>
+    </form>
+
+  </div>
+</div>
+
 
   </div>
 
