@@ -191,7 +191,7 @@
       background-color: #008fcc;
     }
 
-    .contact p{
+    .contact p {
       margin: 10px 0;
       font-size: 1.5rem;
       color: #ddd;
@@ -313,34 +313,63 @@
       pointer-events: auto;
     }
 
-
-    @media (max-width: 600px) {
-      .name {
-        font-size: 2rem;
-      }
-
-      .profile-pic {
-        width: 200px;
-        height: 200px;
-      }
-
-      .about h2,
-      .skills h2 {
-        font-size: 2rem;
-      }
-
-      .about p {
-        font-size: 1rem;
-      }
-
-      .left-menu {
-        display: none !important;
-      }
-
-      .right-button {
-        display: none;
-      }
+    .button-container {
+      flex-direction: column-reverse;
     }
+
+  @media (max-width: 600px) {
+    .right-button {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(500%);
+      background-color: #00aaff;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1001;
+      padding: 10px 16px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      pointer-events: auto !important;
+      height: auto;
+      width: fit-content;
+      max-width: 90%;
+      max-width: 90%;
+      max-height: 7%
+    }
+
+    .left-menu {
+      display: none !important;
+    }
+
+    .name {
+      font-size: 2rem;
+    }
+
+    .profile-pic {
+      width: 200px;
+      height: 200px;
+    }
+
+    .about h2,
+    .skills h2 {
+      font-size: 2rem;
+    }
+
+    .about p {
+      font-size: 1rem;
+    }
+
+    .button-container {
+      flex-direction: column-reverse;
+    }
+  }
   </style>
 </head>
 
@@ -351,8 +380,10 @@
     <a href="#projects">Fun Side Projects</a>
     <a href="#contact">Contact Me</a>
   </nav>
+  <div class="button-container">
+    <a id="dynamicButton" class="right-button" href="">More</a>
 
-  <a id="dynamicButton" class="right-button" href="">More</a>
+  </div>
 
   <div class="container">
     <section id="hero" class="hero slides">
@@ -406,33 +437,34 @@
       </ul>
     </section>
 
-<div class="slides contact" id="contact">
-  <h1 style="margin-left: 2rem;">Contact Me</h1>
-  <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1000px; width: 100%;">
+    <div class="slides contact" id="contact">
+      <h1 style="margin-left: 2rem;">Contact Me</h1>
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1000px; width: 100%;">
 
-    <!-- Left Side: Socials -->
-    <div style="flex: 1 1 300px; text-align: left;">
-      <p><strong>Email:</strong> <a href="mailto:j.meng1024@gmail.com">j.meng1024@gmail.com</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jiaming-meng-3854b925b/"
-          target="_blank">linkedin.com/in/jiaming-meng-3854b925b</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/AtumCor" target="_blank">github.com/AtumCor</a></p>
-      <p><strong>Instagram:</strong> <a href="https://Instagram.com/AtumCor" target="_blank">@AtumCor</a></p>
+        <!-- Left Side: Socials -->
+        <div style="flex: 1 1 300px; text-align: left;">
+          <p><strong>Email:</strong> <a href="mailto:j.meng1024@gmail.com">j.meng1024@gmail.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jiaming-meng-3854b925b/"
+              target="_blank">linkedin.com/in/jiaming-meng-3854b925b</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/AtumCor" target="_blank">github.com/AtumCor</a></p>
+          <p><strong>Instagram:</strong> <a href="https://Instagram.com/AtumCor" target="_blank">@AtumCor</a></p>
+        </div>
+
+        <!-- Right Side: Contact Form using Formsubmit -->
+        <form action="https://formsubmit.co/j.meng1024@gmail.com" method="POST"
+          style="flex: 2 1 400px; display: flex; flex-direction: column; gap: 15px;">
+          <!-- Optional Settings -->
+          <input type="hidden" name="_captcha" value="false">
+
+          <!-- Form Inputs -->
+          <input type="text" name="name" placeholder="Your Name" required class="contact-input" />
+          <input type="email" name="email" placeholder="Your Email" required class="contact-input" />
+          <textarea name="message" rows="5" placeholder="Your Message" required class="contact-input"></textarea>
+          <button type="submit" class="contact-button">Send Message</button>
+        </form>
+
+      </div>
     </div>
-
-    <!-- Right Side: Contact Form using Formsubmit -->
-    <form action="https://formsubmit.co/j.meng1024@gmail.com" method="POST" style="flex: 2 1 400px; display: flex; flex-direction: column; gap: 15px;">
-      <!-- Optional Settings -->
-      <input type="hidden" name="_captcha" value="false">
-
-      <!-- Form Inputs -->
-      <input type="text" name="name" placeholder="Your Name" required class="contact-input" />
-      <input type="email" name="email" placeholder="Your Email" required class="contact-input" />
-      <textarea name="message" rows="5" placeholder="Your Message" required class="contact-input"></textarea>
-      <button type="submit" class="contact-button">Send Message</button>
-    </form>
-
-  </div>
-</div>
 
 
   </div>
