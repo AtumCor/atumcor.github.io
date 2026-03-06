@@ -9,14 +9,6 @@ function pickRandomTheme(exclude: ThemeId): ThemeId {
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-function getInitialTheme(): ThemeId {
-  const saved = localStorage.getItem("theme");
-  if (THEMES.includes(saved as ThemeId)) return saved as ThemeId;
-
-  // Default to a dark theme on first visit
-  return "obsidian";
-}
-
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<ThemeId>(() => "obsidian");
 

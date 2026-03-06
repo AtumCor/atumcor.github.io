@@ -10,7 +10,7 @@ export default function PageIndicator({
   scrollerRef,
   pages,
 }: {
-  scrollerRef: React.RefObject<HTMLElement>;
+  scrollerRef: React.RefObject<HTMLElement | null>;
   pages: PageItem[];
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
