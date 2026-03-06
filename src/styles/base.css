@@ -1,0 +1,43 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text-1);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+p {
+  margin: 0;
+  color: var(--text-2);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  color: var(--text-1);
+  letter-spacing: -0.015em;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.10);
+}
+:root[data-theme="light"] ::selection {
+  background: rgba(17, 18, 22, 0.10);
+}

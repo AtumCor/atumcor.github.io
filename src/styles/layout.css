@@ -1,0 +1,79 @@
+.scroller {
+  height: 100vh;
+  width: 100vw;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  display: flex;
+  flex-direction: row;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+
+  position: relative;
+  isolation: isolate;
+
+  /* hide scrollbar (still scrollable) */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroller::-webkit-scrollbar { display: none; }
+
+.page {
+  flex: 0 0 100vw;
+  height: 100vh;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  background: transparent;
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+  z-index: 1;
+}
+
+.pageInner {
+  width: min(var(--container), calc(100vw - (var(--page-pad) * 2)));
+  height: calc(100vh - 56px);
+  padding: var(--page-pad) 0;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-5);
+}
+
+/* Continuous neutral gradient across all pages */
+.gradientBackdrop {
+  position: absolute;
+  inset: 0;
+  width: 500vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    #0f1115 0%,
+    #101218 25%,
+    #12141b 50%,
+    #141620 75%,
+    #161826 100%
+  );
+}
+
+:root[data-theme="light"] .gradientBackdrop {
+  background: linear-gradient(
+    90deg,
+    #f5f5f6 0%,
+    #f7f7f8 35%,
+    #fafafb 70%,
+    #ffffff 100%
+  );
+}
