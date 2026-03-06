@@ -4,12 +4,19 @@ export default function Projects() {
   return (
     <>
       <section className="projectsSection">
-        <div className="projectGrid">
-          <div className="projectCard">
+
+
+        <div className="featuredProjectsGrid">
+          <article className="featuredProjectCard">
+            <div className="projectCardTop">
+              <span className="projectEyebrow">Featured</span>
+              <time dateTime="2025-05">May 2025</time>
+            </div>
+
             <h3>
               Portfolio Website
               <a
-                href="https://github.com/atumcor/atumcor.github.io"
+                href="https://github.com/AtumCor/atumcor.github.io"
                 target="_blank"
                 rel="noreferrer"
                 className="projectLink portfolioLink"
@@ -18,22 +25,26 @@ export default function Projects() {
               </a>
             </h3>
 
-            <time dateTime="2025-05">May 2025</time>
-
-            <ul>
-              <li>Personal portfolio built with React and TypeScript.</li>
-              <li>Horizontally scrolling page layout.</li>
-              <li>Minimal academic design with animated elements.</li>
-            </ul>
+            <p className="projectSummary">
+              Personal portfolio built with React and TypeScript, designed
+              around a horizontal page flow, minimal styling, and polished
+              interaction details.
+            </p>
 
             <div className="techTags">
               <span>React</span>
               <span>TypeScript</span>
               <span>CSS</span>
+              <span>Vite</span>
             </div>
-          </div>
+          </article>
 
-          <div className="projectCard">
+          <article className="featuredProjectCard">
+            <div className="projectCardTop">
+              <span className="projectEyebrow">Featured</span>
+              <time dateTime="2023-09">Autumn 2023</time>
+            </div>
+
             <h3>
               Lambda Phi Epsilon Website
               <a
@@ -46,21 +57,26 @@ export default function Projects() {
               </a>
             </h3>
 
-            <time dateTime="2023-09">Autumn 2023</time>
-
-            <ul>
-              <li>Official website for the Lambda Phi Epsilon fraternity.</li>
-              <li>Member profiles, events, and organization information.</li>
-              <li>Built using Jekyll for fast static hosting.</li>
-            </ul>
+            <p className="projectSummary">
+              Official organization website built for Lambda Phi Epsilon with a
+              focus on clarity, fast static hosting, and maintainable content
+              structure.
+            </p>
 
             <div className="techTags">
               <span>Jekyll</span>
-              <span>Liquid</span>
-              <span>Ruby</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>GitHub Pages</span>
             </div>
-          </div>
-          <div className="projectCard">
+          </article>
+
+          <article className="featuredProjectCard">
+            <div className="projectCardTop">
+              <span className="projectEyebrow">Featured</span>
+              <time>2024</time>
+            </div>
+
             <h3>
               GooseChase
               <a
@@ -73,67 +89,29 @@ export default function Projects() {
               </a>
             </h3>
 
-            <time>2024</time>
-
-            <ul>
-              <li>
-                Interactive scavenger hunt style application for organizing
-                group activities.
-              </li>
-              <li>
-                Designed to manage challenges, participants, and progress
-                tracking.
-              </li>
-              <li>
-                Focused on simple user interaction and event-based gameplay
-                mechanics.
-              </li>
-            </ul>
+            <p className="projectSummary">
+              Interactive scavenger hunt style web application designed for
+              organizing events, tracking challenges, and coordinating group
+              participation.
+            </p>
 
             <div className="techTags">
-              <span>Typescript</span>
+              <span>JavaScript</span>
               <span>Web App</span>
               <span>Frontend</span>
-              <span>Google Map API</span>
-              <span>ChatGPT API</span>
             </div>
-          </div>
-          <div className="projectCard">
-            <h3>
-              Studi-Buddi
-              <a
-                href="https://github.com/AtumCor/studi-buddi"
-                target="_blank"
-                rel="noreferrer"
-                className="projectLink"
-              >
-                ↗
-              </a>
-            </h3>
+          </article>
+        </div>
+      </section>
 
-            <time>2023</time>
+      <section className="projectsSection moreProjectsSection">
+        <header className="projectsSubheader">
+          <h2>More Projects</h2>
+          <p>Smaller builds, experiments, and works in progress.</p>
+        </header>
 
-            <ul>
-              <li>
-                Study collaboration platform designed to connect students with
-                compatible schedules.
-              </li>
-              <li>
-                Allows users to discover study partners and coordinate sessions.
-              </li>
-              <li>
-                Built as a hackathon project emphasizing rapid development and
-                usability.
-              </li>
-            </ul>
-
-            <div className="techTags">
-              <span>Dart</span>
-              <span>Flutter</span>
-              <span>Mobile App</span>
-            </div>
-          </div>
-          <div className="projectCard">
+        <div className="compactProjectsGrid">
+          <article className="compactProjectCard">
             <h3>
               Digital Wardrobe
               <a
@@ -146,74 +124,79 @@ export default function Projects() {
               </a>
             </h3>
 
-            <time>2025</time>
-
-            <ul>
-              <li>
-                Web application for organizing and visualizing clothing
-                collections digitally.
-              </li>
-              <li>
-                Allows users to catalog garments and experiment with outfit
-                combinations.
-              </li>
-              <li>
-                Focuses on intuitive UI and visual browsing of wardrobe items.
-              </li>
-            </ul>
+            <p>
+              Web application for organizing clothing collections and
+              experimenting with outfit combinations through a clean visual
+              interface.
+            </p>
 
             <div className="techTags">
-              <span>Dart</span>
+              <span>React</span>
               <span>TypeScript</span>
               <span>Frontend</span>
-              <span>PyTorch</span>
             </div>
-          </div>
-        </div>
-      </section>
+          </article>
 
-      <section className="projectsSection hobbySection">
-        <header className="projectsSubheader">
-          <h2>Hobby Projects</h2>
-          <p>Small experiments and works in progress.</p>
-        </header>
+          <article className="compactProjectCard">
+            <h3>
+              Studi-Buddi
+              <a
+                href="https://github.com/AtumCor/studi-buddi"
+                target="_blank"
+                rel="noreferrer"
+                className="projectLink"
+              >
+                ↗
+              </a>
+            </h3>
+            <p>
+              Student collaboration app for finding study partners with similar
+              schedules and improving coordination.
+            </p>
+            <div className="techTags">
+              <span>Dart</span>
+              <span>Flutter</span>
+              <span>Mobile App</span>
+            </div>
+          </article>
 
-        <div className="hobbyGrid">
-          <div className="hobbyCard">
+          <article className="compactProjectCard">
             <h3>Source Movement Platformer</h3>
             <p>
-              Unity platformer using Source-style movement mechanics with a
-              custom level editor.
+              Unity platformer experimenting with Source-style movement and
+              level editor support.
             </p>
             <div className="techTags">
-              <span className="projectTag">WIP</span>
               <span>Unity</span>
               <span>C#</span>
+              <span>Game Dev</span>
             </div>
-          </div>
+          </article>
 
-          <div className="hobbyCard">
+          <article className="compactProjectCard">
             <h3>Factorio Rocket Calculator</h3>
             <p>
-              React + TypeScript tool for planning rocket launches in Factorio.
+              Planning tool for rocket launches and production flow in Factorio.
             </p>
             <div className="techTags">
-              <span className="projectTag">WIP</span>
-              <span>Python</span>
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>Tooling</span>
             </div>
-          </div>
+          </article>
 
-          <div className="hobbyCard">
+          <article className="compactProjectCard">
             <h3>Desktop Macro Collection</h3>
             <p>
-              A collection of macros and automation tools for various games.
+              Small automation scripts and macros for improving workflows and
+              gameplay efficiency.
             </p>
             <div className="techTags">
-              <span className="projectTag">WIP</span>
-              <span>C#</span>
-              <span>Auto Hotkey</span>
+              <span>AutoHotkey</span>
+              <span>Automation</span>
+              <span>Scripting</span>
             </div>
-          </div>
+          </article>
         </div>
       </section>
     </>
