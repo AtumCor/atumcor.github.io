@@ -1,0 +1,25 @@
+/* Horizontal snap scroller + full-page sections */
+.scroller {
+  height: 100vh;
+  width: 100vw;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  display: flex;
+  flex-direction: row;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+
+  position: relative;
+  isolation: isolate;
+
+  /* hide horizontal scrollbar (still scrollable) */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroller::-webkit-scrollbar { display: none; }

@@ -36,8 +36,5 @@ h1, h2, h3 {
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.10);
-}
-:root[data-theme="light"] ::selection {
-  background: rgba(17, 18, 22, 0.10);
+  background: var(--surface-strong);
 }

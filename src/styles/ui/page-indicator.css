@@ -1,0 +1,110 @@
+/* Page indicator + hover labels */
+.pageIndicator {
+  position: fixed;
+  z-index: 20;
+
+  display: flex;
+  gap: 10px;
+
+  padding: 10px;
+  border-radius: 999px;
+
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+
+  /* animate position + rotation when relocating */
+  transition:
+    left 420ms ease,
+    right 420ms ease,
+    top 420ms ease,
+    bottom 420ms ease,
+    transform 420ms ease;
+}
+
+/* Initial position: right side, centered vertically */
+.pageIndicator--right {
+  right: 18px;
+  top: 50%;
+  left: auto;
+  bottom: auto;
+
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+
+/* After user scrolls: bottom, centered horizontally */
+.pageIndicator--bottom {
+  left: 50%;
+  bottom: 70px; /* avoids overlapping the "Not this way." toast */
+  right: auto;
+  top: auto;
+
+  transform: translateX(-50%);
+  flex-direction: row;
+}
+
+/* transient animation helpers */
+.pageIndicator--animToBottom { transform: translateX(-50%) rotate(90deg); }
+.pageIndicator--animToRight  { transform: translateY(-50%) rotate(-90deg); }
+
+.pageDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+
+  border: 1px solid var(--border);
+  background: transparent;
+
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.pageDot.isActive {
+  background: var(--text-1);
+  border-color: transparent;
+  transform: scale(1.15);
+}
+
+/* Tooltip label shown on hover/focus */
+.pageDotLabel {
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translate(-50%, -100%);
+
+  opacity: 0;
+  pointer-events: none;
+
+  white-space: nowrap;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+
+  color: var(--text-1);
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+
+  padding: 6px 10px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+
+  transition: opacity 120ms ease;
+}
+
+.pageDot:hover .pageDotLabel,
+.pageDot:focus-visible .pageDotLabel { opacity: 1; }
+
+.pageDotLabel::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%) rotate(45deg);
+
+  width: 10px;
+  height: 10px;
+
+  background: var(--surface-strong);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}

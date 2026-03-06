@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type PageItem = { id: string; title: string };
 
@@ -14,6 +14,14 @@ export default function PageIndicator({
   pages: PageItem[];
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // right (initial) -> bottom (after moving away from Home)
+  const position = activeIndex === 0 ? "right" : "bottom";
+
+  // add a transient class to animate the "rotation down" motion
+  const [animClass, setAnimClass] = useState<string>("");
+
+  const prevPositionRef = useRef<string>(position);
 
   const ids = useMemo(() => pages.map((p) => p.id), [pages]);
 
@@ -35,6 +43,19 @@ export default function PageIndicator({
     return () => el.removeEventListener("scroll", onScroll);
   }, [scrollerRef, ids.length]);
 
+  useEffect(() => {
+    const prev = prevPositionRef.current;
+    if (prev === position) return;
+
+    // Trigger a quick rotate animation when changing sides.
+    setAnimClass(position === "bottom" ? "pageIndicator--animToBottom" : "pageIndicator--animToRight");
+
+    const t = window.setTimeout(() => setAnimClass(""), 420);
+    prevPositionRef.current = position;
+
+    return () => window.clearTimeout(t);
+  }, [position]);
+
   const scrollToIndex = (i: number) => {
     const el = scrollerRef.current;
     if (!el) return;
@@ -42,7 +63,14 @@ export default function PageIndicator({
   };
 
   return (
-    <nav className="pageIndicator" aria-label="Page indicator">
+    <nav
+      className={[
+        "pageIndicator",
+        position === "right" ? "pageIndicator--right" : "pageIndicator--bottom",
+        animClass,
+      ].join(" ")}
+      aria-label="Page indicator"
+    >
       {pages.map((p, i) => {
         const isActive = i === activeIndex;
         return (

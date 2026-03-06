@@ -1,0 +1,23 @@
+/* Vertical content scrolling within a page (since body is overflow:hidden) */
+.modules {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 6px;
+}
+
+/* Optional: hide vertical scrollbar inside modules (still scrollable) */
+.modules {
+  scrollbar-width: none; /* Firefox */
+}
+.modules::-webkit-scrollbar {
+  width: 0px;            /* Chrome/Safari */
+  height: 0px;
+}
+
+/* Two-column modules on wide screens */
+@media (min-width: 900px) {
+  .modules {
+    grid-template-columns: 1fr 1fr;
+  }
+}

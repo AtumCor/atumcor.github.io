@@ -1,0 +1,22 @@
+.themeToggle {
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 650;
+
+  color: var(--text-1);
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.themeToggle:hover { transform: translateY(-1px); }
+
+/* Button label swap (text-only change on hover/focus) */
+.themeToggleLabel--hover { display: none; }
+
+.themeToggle:hover .themeToggleLabel--default,
+.themeToggle:focus-visible .themeToggleLabel--default { display: none; }
+
+.themeToggle:hover .themeToggleLabel--hover,
+.themeToggle:focus-visible .themeToggleLabel--hover { display: inline; }

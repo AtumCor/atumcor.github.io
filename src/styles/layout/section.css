@@ -1,0 +1,29 @@
+/* Each page is a full viewport "slide" */
+.page {
+  flex: 0 0 100vw;
+  height: 100vh;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  background: transparent;
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+  z-index: 1;
+}
+
+.pageInner {
+  width: min(var(--container), calc(100vw - (var(--page-pad) * 2)));
+  height: calc(100vh - 56px);
+  padding: var(--page-pad) 0;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-5);
+
+  /* required so child scroll areas work inside grid */
+  min-height: 0;
+}

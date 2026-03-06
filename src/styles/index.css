@@ -1,5 +1,21 @@
 @import "./tokens.css";
 @import "./base.css";
-@import "./layout.css";
-@import "./components.css";
-@import "./pages.css";
+
+/* Layout */
+@import "./layout/scroller.css";
+@import "./layout/section.css";
+@import "./layout/backdrop.css";
+@import "./layout/content-scroll.css";
+
+/* UI */
+@import "./ui/typography.css";
+@import "./ui/module.css";
+@import "./ui/buttons.css";
+@import "./ui/top-controls.css";
+@import "./ui/theme-toggle.css";
+@import "./ui/page-indicator.css";
+@import "./ui/not-this-way.css";
+
+/* Pages */
+@import "./pages/home.css";
+/* @import "./pages/home-slotmachine.css"; */ /* legacy, not used currently */
