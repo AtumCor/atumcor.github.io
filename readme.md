@@ -1,73 +1,173 @@
-# React + TypeScript + Vite
+# Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal, interactive portfolio website built with **React, TypeScript, and Vite**, designed to showcase projects, skills, experience, and contact information.
 
-Currently, two official plugins are available:
+The site uses a **horizontal scroll layout with page snapping**, subtle UI animations, and a continuous gradient background to create a clean, modern browsing experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌐 **Live Site:**
+[https://atumcor.github.io](https://atumcor.github.io)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Features
 
-## Expanding the ESLint configuration
+### Horizontal Navigation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Instead of traditional vertical scrolling, the site uses **horizontal page navigation** with snapping between sections.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Pages included:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* Home
+* Projects
+* Skills
+* Experience
+* Contact
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Smooth UI Interactions
+
+* animated title rotation on the home page
+* hover effects for project and contact cards
+* animated page indicators
+* subtle gradient transitions across pages
+
+### Easter Eggs
+
+Hidden interactive elements are included for fun exploration.
+
+Example:
+
+* Press **Space multiple times** on the Contact page to activate **Bongo Cat mode**.
+
+---
+
+# Tech Stack
+
+Frontend
+
+* **React**
+* **TypeScript**
+* **Vite**
+
+Styling
+
+* Modular CSS architecture
+* CSS Grid / Flexbox layouts
+* CSS transitions and animations
+
+Deployment
+
+* **GitHub Pages**
+
+---
+
+# Project Structure
+
+```text
+src/
+ ├─ components/
+ │   ├─ layout/
+ │   └─ ui/
+ │
+ ├─ pages/
+ │   ├─ Home.tsx
+ │   ├─ Projects.tsx
+ │   ├─ Skills.tsx
+ │   ├─ Experience.tsx
+ │   └─ Contact.tsx
+ │
+ ├─ styles/
+ │   ├─ layout/
+ │   ├─ pages/
+ │   └─ ui/
+ │
+ ├─ assets/
+ │
+ └─ App.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The site is organized around **page modules**, reusable UI components, and modular CSS styles.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Local Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/AtumCor/atumcor.github.io.git
+cd atumcor.github.io
 ```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Open the local server:
+
+```text
+http://localhost:5173
+```
+
+---
+
+# Build
+
+To build the production version:
+
+```bash
+npm run build
+```
+
+The generated site will appear in:
+
+```
+dist/
+```
+
+---
+
+# Deployment
+
+This repository is configured for **GitHub Pages deployment**.
+
+Because the repository name is:
+
+```
+atumcor.github.io
+```
+
+GitHub automatically serves the `main` branch as the live website.
+
+Any push to `main` updates the site.
+
+---
+
+# Future Improvements
+
+Potential features planned for future versions:
+
+* project filtering by technology
+* animated skill visualizations
+* blog / notes section
+* improved accessibility support
+* additional hidden interactive elements
+
+---
+
+# Author
+
+**Jiaming (Jerry) Meng**
+
+Computer Science & Mathematics student
+
+GitHub
+[https://github.com/AtumCor](https://github.com/AtumCor)
+
