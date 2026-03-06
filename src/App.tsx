@@ -36,13 +36,20 @@ export default function App() {
     const el = scrollerRef.current;
     if (!el) return;
 
-    // Show once per direction per page load
     let shownDown = false;
     let shownUp = false;
+    let toastTimeoutId: number | null = null;
 
     const showToast = (position: BlockPosition) => {
       setToast({ show: true, position });
-      window.setTimeout(() => setToast((t) => ({ ...t, show: false })), 900);
+
+      if (toastTimeoutId !== null) {
+        window.clearTimeout(toastTimeoutId);
+      }
+
+      toastTimeoutId = window.setTimeout(() => {
+        setToast((t) => ({ ...t, show: false }));
+      }, 900);
     };
 
     const onWheel = (e: WheelEvent) => {
@@ -51,22 +58,13 @@ export default function App() {
 
       const idx = Math.round(el.scrollLeft / el.clientWidth);
 
-      // ✅ Only do horizontal page scrolling when holding Shift
       if (e.shiftKey) {
-        // Home: optional "Not this way" logic doesn't apply here; Shift IS the intended way
         e.preventDefault();
         el.scrollBy({ left: e.deltaY, behavior: "auto" });
         return;
       }
 
-      // ✅ Without Shift: DO NOT prevent default.
-      // Let the currently-hovered page content scroll vertically like normal.
-
-      // Optional: keep your "Not this way." behavior ONLY on Home when user tries normal scroll
-      // (This helps teach the interaction without breaking vertical scroll on other pages)
       if (idx === 0) {
-        // if home has no vertical content, this will just show the toast
-        // and prevent the "dead scroll" feeling
         e.preventDefault();
 
         if (Math.abs(e.deltaY) < 0.5) return;
@@ -79,13 +77,17 @@ export default function App() {
           showToast("top");
         }
       }
-
-      // For other pages, do nothing:
-      // the browser will scroll the inner vertical scroller (we'll set it up in CSS)
     };
 
     el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel as any);
+
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+
+      if (toastTimeoutId !== null) {
+        window.clearTimeout(toastTimeoutId);
+      }
+    };
   }, []);
 
   return (
