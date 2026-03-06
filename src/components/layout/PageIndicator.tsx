@@ -1,93 +1,99 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-type PageItem = { id: string; title: string };
+type PageItem = {
+  id: string;
+  title: string;
+};
 
-function clamp(n: number, a: number, b: number) {
-  return Math.max(a, Math.min(b, n));
-}
+type IndicatorPosition = "right" | "bottom";
 
 export default function PageIndicator({
   scrollerRef,
   pages,
 }: {
-  scrollerRef: React.RefObject<HTMLElement>;
+  scrollerRef: React.RefObject<HTMLElement | null>;
   pages: PageItem[];
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const indicatorRef = useRef<HTMLDivElement | null>(null);
+  const prevPositionRef = useRef<IndicatorPosition>("right");
 
-  // right (initial) -> bottom (after moving away from Home)
-  const position = activeIndex === 0 ? "right" : "bottom";
-
-  // add a transient class to animate the "rotation down" motion
-  const [animClass, setAnimClass] = useState<string>("");
-
-  const prevPositionRef = useRef<string>(position);
-
-  const ids = useMemo(() => pages.map((p) => p.id), [pages]);
+  const position: IndicatorPosition = activeIndex === 0 ? "right" : "bottom";
 
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
 
-    const onScroll = () => {
-      const idx = clamp(
-        Math.round(el.scrollLeft / el.clientWidth),
-        0,
-        ids.length - 1
-      );
-      setActiveIndex(idx);
+    const updateActive = () => {
+      const nextIndex = Math.round(el.scrollLeft / el.clientWidth);
+      setActiveIndex(nextIndex);
     };
 
-    onScroll();
-    el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
-  }, [scrollerRef, ids.length]);
+    updateActive();
+    el.addEventListener("scroll", updateActive, { passive: true });
+
+    return () => el.removeEventListener("scroll", updateActive);
+  }, [scrollerRef]);
 
   useEffect(() => {
+    const indicator = indicatorRef.current;
+    if (!indicator) return;
+
     const prev = prevPositionRef.current;
     if (prev === position) return;
 
-    // Trigger a quick rotate animation when changing sides.
-    setAnimClass(position === "bottom" ? "pageIndicator--animToBottom" : "pageIndicator--animToRight");
+    const animClass =
+      position === "bottom"
+        ? "pageIndicator--animToBottom"
+        : "pageIndicator--animToRight";
 
-    const t = window.setTimeout(() => setAnimClass(""), 420);
+    indicator.classList.remove(
+      "pageIndicator--animToBottom",
+      "pageIndicator--animToRight"
+    );
+
+    // force reflow so the animation can restart cleanly
+    void indicator.offsetWidth;
+
+    indicator.classList.add(animClass);
+
+    const t = window.setTimeout(() => {
+      indicator.classList.remove(animClass);
+    }, 420);
+
     prevPositionRef.current = position;
 
     return () => window.clearTimeout(t);
   }, [position]);
 
-  const scrollToIndex = (i: number) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
-  };
+  const wrapperClass = useMemo(() => {
+    return `pageIndicator pageIndicator--${position}`;
+  }, [position]);
 
   return (
-    <nav
-      className={[
-        "pageIndicator",
-        position === "right" ? "pageIndicator--right" : "pageIndicator--bottom",
-        animClass,
-      ].join(" ")}
-      aria-label="Page indicator"
-    >
-      {pages.map((p, i) => {
-        const isActive = i === activeIndex;
+    <div ref={indicatorRef} className={wrapperClass} aria-label="Page indicator">
+      {pages.map((page, index) => {
+        const isActive = index === activeIndex;
+
         return (
           <button
-            key={p.id}
+            key={page.id}
             type="button"
             className={`pageDot ${isActive ? "isActive" : ""}`}
-            onClick={() => scrollToIndex(i)}
-            aria-label={`Go to ${p.title}`}
+            aria-label={`Go to ${page.title}`}
             aria-current={isActive ? "page" : undefined}
-          >
-            <span className="pageDotLabel" aria-hidden="true">
-              {p.title}
-            </span>
-          </button>
+            onClick={() => {
+              const el = scrollerRef.current;
+              if (!el) return;
+
+              el.scrollTo({
+                left: index * el.clientWidth,
+                behavior: "smooth",
+              });
+            }}
+          />
         );
       })}
-    </nav>
+    </div>
   );
 }

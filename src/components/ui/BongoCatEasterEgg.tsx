@@ -3,7 +3,7 @@ import bongoCatGif from "../../assets/bongo-cat.gif";
 import "../../styles/ui/bongo-cat-easter-egg.css";
 
 export default function BongoCatEasterEgg() {
-  const [spaceCount, setSpaceCount] = useState(0);
+  const [, setSpaceCount] = useState(0);
   const [showBongo, setShowBongo] = useState(false);
 
   const resetTimerRef = useRef<number | null>(null);

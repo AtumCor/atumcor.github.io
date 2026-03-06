@@ -113,13 +113,13 @@ function MailIcon() {
   );
 }
 
-function PhoneIcon() {
-  return (
-    <IconBase>
-      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.4 2.6a2 2 0 0 1-.6 1.7l-1.6 1.6a16 16 0 0 0 7.1 7.1l1.6-1.6a2 2 0 0 1 1.7-.6l2.6.4A2 2 0 0 1 22 16.9z" />
-    </IconBase>
-  );
-}
+// function PhoneIcon() {
+//   return (
+//     <IconBase>
+//       <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.4 2.6a2 2 0 0 1-.6 1.7l-1.6 1.6a16 16 0 0 0 7.1 7.1l1.6-1.6a2 2 0 0 1 1.7-.6l2.6.4A2 2 0 0 1 22 16.9z" />
+//     </IconBase>
+//   );
+// }
 
 function GitHubIcon() {
   return (
@@ -140,14 +140,14 @@ function InstagramIcon() {
   );
 }
 
-function XIcon() {
-  return (
-    <IconBase>
-      <path d="M4 4l16 16" />
-      <path d="M20 4L4 20" />
-    </IconBase>
-  );
-}
+// function XIcon() {
+//   return (
+//     <IconBase>
+//       <path d="M4 4l16 16" />
+//       <path d="M20 4L4 20" />
+//     </IconBase>
+//   );
+// }
 
 function DocumentIcon() {
   return (
