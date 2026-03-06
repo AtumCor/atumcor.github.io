@@ -18,7 +18,7 @@
 .pageInner {
   width: min(var(--container), calc(100vw - (var(--page-pad) * 2)));
   height: calc(100vh - 56px);
-  padding: var(--page-pad) 0;
+  padding:0;
 
   display: grid;
   grid-template-rows: auto 1fr;

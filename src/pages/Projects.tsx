@@ -1,152 +1,221 @@
+import "../styles/pages/projects.css";
+
 export default function Projects() {
   return (
     <>
-      <article className="module projectsIntro">
-        <header className="projectsHeader">
-          <h1>Things I’ve Built</h1>
-          <p>
-            Here’s a mix of professional work and side projects I’ve enjoyed
-            creating.
-          </p>
-        </header>
-      </article>
-
-      <article className="module projectSection">
-        <h2>Professional Work</h2>
-
-        <div className="cardGrid">
-          <div className="card projectCard">
-            <h3>HIGNN Project Intern</h3>
-            <time dateTime="2024-05">Summer 2024</time>
-            <ul>
-              <li>
-                Developed a Python wrapper for a C++ backend, enhancing
-                usability for non-experts.
-              </li>
-              <li>
-                Integrated with a Hierarchical Informative Graph Neural
-                Networks framework.
-              </li>
-              <li>
-                Contributed to molecular property prediction, improving
-                simulation efficiency.
-              </li>
-              <li>
-                Collaborated with a team of researchers to bridge complex
-                algorithms with practical applications.
-              </li>
-            </ul>
-          </div>
-
-          <div className="card projectCard">
-            <h3>WILDHACK 12-Hour Mini Hackathon</h3>
-            <time dateTime="2023-09">Autumn 2023</time>
-            <ul>
-              <li>
-                Created a Dart application to connect students with similar
-                academic schedules.
-              </li>
-              <li>
-                Implemented secure account login and real-time messaging
-                features.
-              </li>
-              <li>
-                Designed an intuitive UI for easy navigation and user
-                engagement.
-              </li>
-              <li>
-                Participated in a 12-hour hackathon, showcasing rapid
-                development skills.
-              </li>
-            </ul>
-          </div>
-
-          <div className="card projectCard">
-            <h3>Portfolio Website</h3>
-            <time dateTime="2025-05">May 2025</time>
-            <ul>
-              <li>
-                Designed and developed this portfolio website to showcase my
-                projects and skills.
-              </li>
-              <li>
-                Utilized HTML, CSS, and JavaScript for a clean, responsive
-                design.
-              </li>
-              <li>
-                Focused on user experience with easy navigation and clear
-                project descriptions.
-              </li>
-              <li>
-                Implemented best practices for web accessibility and
-                performance.
-              </li>
-            </ul>
-          </div>
-
-          <div className="card projectCard">
+      <section className="projectsSection">
+        <div className="projectGrid">
+          <div className="projectCard">
             <h3>
-              Lambda Phi Epsilon Organization Website:{" "}
+              Portfolio Website
+              <a
+                href="https://github.com/atumcor/atumcor.github.io"
+                target="_blank"
+                rel="noreferrer"
+                className="projectLink portfolioLink"
+              >
+                ↗<span className="projectTooltip">You are looking at it!</span>
+              </a>
+            </h3>
+
+            <time dateTime="2025-05">May 2025</time>
+
+            <ul>
+              <li>Personal portfolio built with React and TypeScript.</li>
+              <li>Horizontally scrolling page layout.</li>
+              <li>Minimal academic design with animated elements.</li>
+            </ul>
+
+            <div className="techTags">
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>CSS</span>
+            </div>
+          </div>
+
+          <div className="projectCard">
+            <h3>
+              Lambda Phi Epsilon Website
               <a
                 href="https://www.tosulambdas.com/"
                 target="_blank"
                 rel="noreferrer"
+                className="projectLink"
               >
-                tosulambdas.com
+                ↗
               </a>
             </h3>
+
             <time dateTime="2023-09">Autumn 2023</time>
+
+            <ul>
+              <li>Official website for the Lambda Phi Epsilon fraternity.</li>
+              <li>Member profiles, events, and organization information.</li>
+              <li>Built using Jekyll for fast static hosting.</li>
+            </ul>
+
+            <div className="techTags">
+              <span>Jekyll</span>
+              <span>Liquid</span>
+              <span>Ruby</span>
+            </div>
+          </div>
+          <div className="projectCard">
+            <h3>
+              GooseChase
+              <a
+                href="https://github.com/AtumCor/goosechase"
+                target="_blank"
+                rel="noreferrer"
+                className="projectLink"
+              >
+                ↗
+              </a>
+            </h3>
+
+            <time>2024</time>
+
             <ul>
               <li>
-                Developed a modern, responsive website for the Lambda Phi
-                Epsilon fraternity.
+                Interactive scavenger hunt style application for organizing
+                group activities.
               </li>
               <li>
-                Implemented features like event calendars, member profiles, and
-                news updates.
+                Designed to manage challenges, participants, and progress
+                tracking.
               </li>
               <li>
-                Focused on user-friendly design and easy content management for
-                non-technical users.
-              </li>
-              <li>
-                Utilized Jekyll for static site generation, ensuring fast load
-                times and SEO optimization.
+                Focused on simple user interaction and event-based gameplay
+                mechanics.
               </li>
             </ul>
+
+            <div className="techTags">
+              <span>Typescript</span>
+              <span>Web App</span>
+              <span>Frontend</span>
+              <span>Google Map API</span>
+              <span>ChatGPT API</span>
+            </div>
+          </div>
+          <div className="projectCard">
+            <h3>
+              Studi-Buddi
+              <a
+                href="https://github.com/AtumCor/studi-buddi"
+                target="_blank"
+                rel="noreferrer"
+                className="projectLink"
+              >
+                ↗
+              </a>
+            </h3>
+
+            <time>2023</time>
+
+            <ul>
+              <li>
+                Study collaboration platform designed to connect students with
+                compatible schedules.
+              </li>
+              <li>
+                Allows users to discover study partners and coordinate sessions.
+              </li>
+              <li>
+                Built as a hackathon project emphasizing rapid development and
+                usability.
+              </li>
+            </ul>
+
+            <div className="techTags">
+              <span>Dart</span>
+              <span>Flutter</span>
+              <span>Mobile App</span>
+            </div>
+          </div>
+          <div className="projectCard">
+            <h3>
+              Digital Wardrobe
+              <a
+                href="https://github.com/AtumCor/digital-wardrobe"
+                target="_blank"
+                rel="noreferrer"
+                className="projectLink"
+              >
+                ↗
+              </a>
+            </h3>
+
+            <time>2025</time>
+
+            <ul>
+              <li>
+                Web application for organizing and visualizing clothing
+                collections digitally.
+              </li>
+              <li>
+                Allows users to catalog garments and experiment with outfit
+                combinations.
+              </li>
+              <li>
+                Focuses on intuitive UI and visual browsing of wardrobe items.
+              </li>
+            </ul>
+
+            <div className="techTags">
+              <span>Dart</span>
+              <span>TypeScript</span>
+              <span>Frontend</span>
+              <span>PyTorch</span>
+            </div>
           </div>
         </div>
-      </article>
+      </section>
 
-      <article className="module projectSection">
-        <h2>Hobby Projects</h2>
+      <section className="projectsSection hobbySection">
+        <header className="projectsSubheader">
+          <h2>Hobby Projects</h2>
+          <p>Small experiments and works in progress.</p>
+        </header>
 
-        <div className="cardGrid">
-          <div className="card projectCard">
-            <h3>(WIP) Source Movement Platformer</h3>
+        <div className="hobbyGrid">
+          <div className="hobbyCard">
+            <h3>Source Movement Platformer</h3>
             <p>
-              A Unity-based platformer utilizing source-style movement with
-              level editor support.
+              Unity platformer using Source-style movement mechanics with a
+              custom level editor.
             </p>
+            <div className="techTags">
+              <span className="projectTag">WIP</span>
+              <span>Unity</span>
+              <span>C#</span>
+            </div>
           </div>
 
-          <div className="card projectCard">
-            <h3>(WIP) Factorio Mod</h3>
+          <div className="hobbyCard">
+            <h3>Factorio Rocket Calculator</h3>
             <p>
-              A Factorio rocket launch calculator built with React and
-              TypeScript.
+              React + TypeScript tool for planning rocket launches in Factorio.
             </p>
+            <div className="techTags">
+              <span className="projectTag">WIP</span>
+              <span>Python</span>
+            </div>
           </div>
 
-          <div className="card projectCard">
-            <h3>(WIP) Desktop Macro Collection</h3>
+          <div className="hobbyCard">
+            <h3>Desktop Macro Collection</h3>
             <p>
-              A collection of desktop macros for various games, enhancing
-              gameplay efficiency.
+              A collection of macros and automation tools for various games.
             </p>
+            <div className="techTags">
+              <span className="projectTag">WIP</span>
+              <span>C#</span>
+              <span>Auto Hotkey</span>
+            </div>
           </div>
         </div>
-      </article>
+      </section>
     </>
   );
 }

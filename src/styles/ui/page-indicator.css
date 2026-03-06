@@ -23,7 +23,7 @@
 
 /* Initial position: right side, centered vertically */
 .pageIndicator--right {
-  right: 18px;
+  right: 5%;
   top: 50%;
   left: auto;
   bottom: auto;
@@ -35,7 +35,7 @@
 /* After user scrolls: bottom, centered horizontally */
 .pageIndicator--bottom {
   left: 50%;
-  bottom: 70px; /* avoids overlapping the "Not this way." toast */
+  bottom: 5%; /* avoids overlapping the "Not this way." toast */
   right: auto;
   top: auto;
 
@@ -44,8 +44,8 @@
 }
 
 /* transient animation helpers */
-.pageIndicator--animToBottom { transform: translateX(-50%) rotate(90deg); }
-.pageIndicator--animToRight  { transform: translateY(-50%) rotate(-90deg); }
+.pageIndicator--animToBottom { transform: translateX(-50%) }
+.pageIndicator--animToRight  { transform: translateY(-50%) }
 
 .pageDot {
   width: 8px;
