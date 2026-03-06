@@ -30,6 +30,13 @@ const CONTACTS: ContactItem[] = [
     href: "https://instagram.com/atumcor",
     helper: "Casual updates and photos",
     icon: <InstagramIcon />,
+  },
+  {
+    label: "",
+    value: "Resume",
+    href: `${import.meta.env.BASE_URL}Jiaming_(Jerry)_Meng.pdf`,
+    helper: "",
+    icon: <DocumentIcon />
   }
 ];
 
@@ -38,11 +45,10 @@ export default function Contact() {
     <>
       <article className="module contactModule">
         <div className="contactHero">
-          <p className="contactEyebrow">Contact</p>
+            
           <h2>Let’s build something cool.</h2>
           <p className="contactIntro">
-            Whether it’s a project, internship, research idea, or just a fun conversation,
-            feel free to reach out.
+            I'm bored
           </p>
         </div>
 
@@ -139,6 +145,20 @@ function XIcon() {
     <IconBase>
       <path d="M4 4l16 16" />
       <path d="M20 4L4 20" />
+    </IconBase>
+  );
+}
+
+function DocumentIcon() {
+  return (
+    <IconBase>
+      {/* document shape */}
+      <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
+      {/* folded corner */}
+      <path d="M15 2v6h6" />
+      {/* text lines */}
+      <path d="M9 13h6" />
+      <path d="M9 17h6" />
     </IconBase>
   );
 }

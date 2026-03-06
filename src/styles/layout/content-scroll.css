@@ -4,6 +4,10 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-right: 6px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 /* Optional: hide vertical scrollbar inside modules (still scrollable) */
