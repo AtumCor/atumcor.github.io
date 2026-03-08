@@ -51,6 +51,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        us
-::contentReference[oaicite:6]{index=6}
-es: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4

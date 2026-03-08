@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import profile from "../assets/profile.jpg";
+import profile from "./assets/profile.jpg";
 import "../styles/pages/home.css";
 
 const titles = [
