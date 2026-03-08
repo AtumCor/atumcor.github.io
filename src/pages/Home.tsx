@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import profile from "../assets/profile.jpg";
 import "../styles/pages/home.css";
 
 const titles = [
@@ -76,7 +75,7 @@ export default function Home() {
       </div>
 
       <div className="homeImage">
-        <img src={profile} alt="Profile portrait" />
+        <img src={`${import.meta.env.BASE_URL}profile.jpg`} alt="Profile portrait" />
       </div>
     </div>
   );
