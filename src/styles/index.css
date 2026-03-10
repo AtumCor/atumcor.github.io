@@ -15,6 +15,7 @@
 @import "./ui/theme-toggle.css";
 @import "./ui/page-indicator.css";
 @import "./ui/not-this-way.css";
+@import "./ui/konami-code-easter-egg.css";
 
 /* Pages */
 @import "./pages/home.css";

@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import "../styles/pages/home.css";
 
 const titles = [
-  "Coder",
+  "Programmer",
   "Mathematician",
-  "Nerd",
   "Rocket Scientist",
   "Volunteer",
   "Cat Lover",

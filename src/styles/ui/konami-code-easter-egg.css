@@ -1,0 +1,42 @@
+body.konami-mode {
+  animation: konamiHueShift 8s linear infinite;
+}
+
+body.konami-mode .gradientBackdrop {
+  filter: saturate(1.35) hue-rotate(25deg);
+  transition: filter 300ms ease;
+}
+
+body.konami-mode .module,
+body.konami-mode .contactCard,
+body.konami-mode .skillsCard,
+body.konami-mode .projectCard {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent),
+    0 0 24px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+@keyframes konamiHueShift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+body.theme-catppuccin {
+  --accent: #cba6f7;
+  --text-1: #cdd6f4;
+
+  --surface: #1e1e2e;
+  --surface-strong: #181825;
+
+  --border: #313244;
+}
+
+body.theme-catppuccin .module {
+  box-shadow:
+    0 0 0 1px rgba(203,166,247,0.3),
+    0 0 18px rgba(203,166,247,0.15);
+}

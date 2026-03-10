@@ -12,6 +12,9 @@ import Skills from "./pages/Skills";
 import Experience from "./pages/Experience";
 import Contact from "./pages/Contact";
 
+import useKeyboardNavigation from "./hooks/useKeyboardNavigation";
+import useKonamiCode from "./hooks/useKonamiCode";
+
 type PageDef = { id: string; title: string; Component: React.ComponentType };
 
 const PAGES: PageDef[] = [
@@ -31,6 +34,17 @@ export default function App() {
     show: boolean;
     position: BlockPosition;
   }>({ show: false, position: "bottom" });
+
+  useKeyboardNavigation(scrollerRef, PAGES);
+  const { active: konamiActive, justActivated } = useKonamiCode();
+
+  useEffect(() => {
+    document.body.classList.toggle("konami-mode", konamiActive);
+
+    return () => {
+      document.body.classList.remove("konami-mode");
+    };
+  }, [konamiActive]);
 
   useEffect(() => {
     const el = scrollerRef.current;
@@ -102,6 +116,12 @@ export default function App() {
         show={toast.show}
         position={toast.position}
         text="Not this way."
+      />
+
+      <NotThisWay
+        show={justActivated}
+        position="top"
+        text="Developer mode activated"
       />
 
       <div className="gradientBackdrop" aria-hidden="true" />
