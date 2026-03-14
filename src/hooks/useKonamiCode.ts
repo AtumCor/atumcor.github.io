@@ -16,12 +16,22 @@ const KONAMI_SEQUENCE = [
 export default function useKonamiCode() {
   const [active, setActive] = useState(false);
   const [justActivated, setJustActivated] = useState(false);
+  const [locked, setLocked] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [showHadouken, setShowHadouken] = useState(false);
 
   const progressRef = useRef(0);
   const resetTimerRef = useRef<number | null>(null);
   const activationTimerRef = useRef<number | null>(null);
+  const hadoukenTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
+    const resetSequence = () => {
+      progressRef.current = 0;
+      setProgress(0);
+      setLocked(false);
+    };
+
     const onKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
       const tag = target?.tagName;
@@ -34,29 +44,31 @@ export default function useKonamiCode() {
 
       if (isTyping) return;
 
-      const expectedKey = KONAMI_SEQUENCE[progressRef.current];
       const pressedKey = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+      const expectedKey = KONAMI_SEQUENCE[progressRef.current];
+
+      if (progressRef.current === 0 && pressedKey === KONAMI_SEQUENCE[0]) {
+        setLocked(true);
+      }
 
       if (pressedKey === expectedKey) {
         progressRef.current += 1;
+        setProgress(progressRef.current);
 
         if (resetTimerRef.current !== null) {
           window.clearTimeout(resetTimerRef.current);
         }
 
         resetTimerRef.current = window.setTimeout(() => {
-          progressRef.current = 0;
-        }, 2000);
+          resetSequence();
+        }, 3000);
 
         if (progressRef.current === KONAMI_SEQUENCE.length) {
           setActive((prev) => !prev);
           setJustActivated(true);
-          progressRef.current = 0;
+          setShowHadouken(true);
 
-          if (resetTimerRef.current !== null) {
-            window.clearTimeout(resetTimerRef.current);
-            resetTimerRef.current = null;
-          }
+          resetSequence();
 
           if (activationTimerRef.current !== null) {
             window.clearTimeout(activationTimerRef.current);
@@ -65,24 +77,21 @@ export default function useKonamiCode() {
           activationTimerRef.current = window.setTimeout(() => {
             setJustActivated(false);
           }, 1400);
+
+          if (hadoukenTimerRef.current !== null) {
+            window.clearTimeout(hadoukenTimerRef.current);
+          }
+
+          hadoukenTimerRef.current = window.setTimeout(() => {
+            setShowHadouken(false);
+          }, 1600);
         }
 
+        e.preventDefault();
         return;
       }
 
-      progressRef.current = pressedKey === KONAMI_SEQUENCE[0] ? 1 : 0;
-
-      if (resetTimerRef.current !== null) {
-        window.clearTimeout(resetTimerRef.current);
-      }
-
-      if (progressRef.current > 0) {
-        resetTimerRef.current = window.setTimeout(() => {
-          progressRef.current = 0;
-        }, 2000);
-      } else {
-        resetTimerRef.current = null;
-      }
+      resetSequence();
     };
 
     window.addEventListener("keydown", onKeyDown);
@@ -97,8 +106,12 @@ export default function useKonamiCode() {
       if (activationTimerRef.current !== null) {
         window.clearTimeout(activationTimerRef.current);
       }
+
+      if (hadoukenTimerRef.current !== null) {
+        window.clearTimeout(hadoukenTimerRef.current);
+      }
     };
   }, []);
 
-  return { active, justActivated };
+  return { active, justActivated, locked, progress, showHadouken };
 }

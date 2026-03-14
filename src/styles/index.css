@@ -7,6 +7,8 @@
 @import "./layout/backdrop.css";
 @import "./layout/content-scroll.css";
 
+@import "./layout/animated-backdrop.css";
+
 /* UI */
 @import "./ui/typography.css";
 @import "./ui/module.css";
@@ -15,7 +17,10 @@
 @import "./ui/theme-toggle.css";
 @import "./ui/page-indicator.css";
 @import "./ui/not-this-way.css";
+
 @import "./ui/konami-code-easter-egg.css";
+@import "./ui/hadouken.css";
+@import "./ui/use-gravity-mode.css";
 
 /* Pages */
 @import "./pages/home.css";

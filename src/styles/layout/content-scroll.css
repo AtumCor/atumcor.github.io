@@ -3,7 +3,7 @@
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding-right: 6px;
+  padding: 5px;
 
   display: flex;
   flex-direction: column;

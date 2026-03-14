@@ -3,6 +3,7 @@ import "./styles/styles.css";
 
 import ThemeToggle from "./components/ui/ThemeToggle";
 import Section from "./components/layout/Section";
+import NeuralNetworkBackdrop from "./components/layout/NeuralNetworkBackdrop";
 import NotThisWay from "./components/ui/NotThisWay";
 import PageIndicator from "./components/layout/PageIndicator";
 
@@ -14,8 +15,11 @@ import Contact from "./pages/Contact";
 
 import useKeyboardNavigation from "./hooks/useKeyboardNavigation";
 import useKonamiCode from "./hooks/useKonamiCode";
+import useGravityMode from "./hooks/useGravityMode";
+import HadoukenEasterEgg from "./components/ui/HadoukenEasterEgg";
 
 type PageDef = { id: string; title: string; Component: React.ComponentType };
+type SectionId = "home" | "projects" | "skills" | "experience" | "contact";
 
 const PAGES: PageDef[] = [
   { id: "home", title: "Home", Component: Home },
@@ -35,8 +39,18 @@ export default function App() {
     position: BlockPosition;
   }>({ show: false, position: "bottom" });
 
-  useKeyboardNavigation(scrollerRef, PAGES);
-  const { active: konamiActive, justActivated } = useKonamiCode();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const {
+    active: konamiActive,
+    justActivated,
+    locked,
+    progress: konamiProgress,
+    showHadouken,
+  } = useKonamiCode();
+
+  useKeyboardNavigation(scrollerRef, locked ? [] : PAGES);
+  const { gravityEnabled, blackHoleEnabled } = useGravityMode();
 
   useEffect(() => {
     document.body.classList.toggle("konami-mode", konamiActive);
@@ -45,6 +59,26 @@ export default function App() {
       document.body.classList.remove("konami-mode");
     };
   }, [konamiActive]);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const updateActiveIndex = () => {
+      const nextIndex = Math.round(el.scrollLeft / el.clientWidth);
+      const clamped = Math.max(0, Math.min(nextIndex, PAGES.length - 1));
+      setActiveIndex(clamped);
+    };
+
+    updateActiveIndex();
+    el.addEventListener("scroll", updateActiveIndex, { passive: true });
+    window.addEventListener("resize", updateActiveIndex);
+
+    return () => {
+      el.removeEventListener("scroll", updateActiveIndex);
+      window.removeEventListener("resize", updateActiveIndex);
+    };
+  }, []);
 
   useEffect(() => {
     const el = scrollerRef.current;
@@ -105,32 +139,41 @@ export default function App() {
   }, []);
 
   return (
-    <div className="scroller" ref={scrollerRef}>
-      <div className="topRightControls">
-        <ThemeToggle />
+    <>
+      <HadoukenEasterEgg show={showHadouken} />
+
+      <div className="scroller" ref={scrollerRef}>
+        <div className="topRightControls">
+          <ThemeToggle />
+        </div>
+
+        <PageIndicator scrollerRef={scrollerRef} pages={PAGES} />
+
+        <NotThisWay
+          show={toast.show}
+          position={toast.position}
+          text="Not this way."
+        />
+
+        <NotThisWay
+          show={justActivated}
+          position="top"
+          text="Developer mode activated"
+        />
+
+        <NeuralNetworkBackdrop
+          konamiProgress={konamiProgress}
+          gravityMode={gravityEnabled}
+          blackHoleMode={blackHoleEnabled}
+          sectionId={PAGES[activeIndex].id as SectionId}
+        />
+
+        {PAGES.map(({ id, title, Component }) => (
+          <Section key={id} id={id} title={title}>
+            <Component />
+          </Section>
+        ))}
       </div>
-
-      <PageIndicator scrollerRef={scrollerRef} pages={PAGES} />
-
-      <NotThisWay
-        show={toast.show}
-        position={toast.position}
-        text="Not this way."
-      />
-
-      <NotThisWay
-        show={justActivated}
-        position="top"
-        text="Developer mode activated"
-      />
-
-      <div className="gradientBackdrop" aria-hidden="true" />
-
-      {PAGES.map(({ id, title, Component }) => (
-        <Section key={id} id={id} title={title}>
-          <Component />
-        </Section>
-      ))}
-    </div>
+    </>
   );
 }

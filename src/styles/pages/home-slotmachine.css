@@ -55,12 +55,14 @@
 
 .slotItem {
   height: 1.22em;
-  display: flex;
+  display: block;
   align-items: center;
+  text-align: left;
   white-space: nowrap;
   color: var(--accent);
   padding-bottom: 0.1em;
 }
+
 
 .homeImage {
   width: 360px;

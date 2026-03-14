@@ -1,0 +1,39 @@
+.hadoukenShell {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  pointer-events: none;
+  animation: hadoukenDrop 1.6s ease forwards;
+}
+
+.hadoukenGif {
+  width: min(320px, 40vw);
+  height: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes hadoukenDrop {
+  0% {
+    transform: translateX(-50%) translateY(-220px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  35% {
+    transform: translateX(-50%) translateY(24px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(-50%) translateY(24px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-220px);
+    opacity: 0;
+  }
+}

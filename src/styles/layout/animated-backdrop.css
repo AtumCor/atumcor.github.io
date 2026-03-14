@@ -1,0 +1,126 @@
+.animatedBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(120, 119, 198, 0.18), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(255, 140, 180, 0.14), transparent 28%),
+    radial-gradient(circle at 50% 80%, rgba(100, 180, 255, 0.12), transparent 30%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--surface) 92%, black 8%) 0%,
+      color-mix(in srgb, var(--surface-strong) 94%, black 6%) 45%,
+      color-mix(in srgb, var(--surface) 90%, black 10%) 100%
+    );
+}
+
+.auroraLayer,
+.auroraGlow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.auroraLayer--one {
+  top: -10%;
+  left: -8%;
+  width: 42vw;
+  height: 42vw;
+  background: color-mix(in srgb, var(--accent) 42%, transparent);
+  animation: driftOne 18s ease-in-out infinite alternate;
+}
+
+.auroraLayer--two {
+  top: 18%;
+  right: -12%;
+  width: 34vw;
+  height: 34vw;
+  background: rgba(120, 180, 255, 0.18);
+  animation: driftTwo 22s ease-in-out infinite alternate;
+}
+
+.auroraLayer--three {
+  bottom: -14%;
+  left: 28%;
+  width: 38vw;
+  height: 38vw;
+  background: rgba(255, 120, 200, 0.14);
+  animation: driftThree 26s ease-in-out infinite alternate;
+}
+
+.auroraGlow {
+  top: 35%;
+  left: 50%;
+  width: 60vw;
+  height: 22vw;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(130, 120, 255, 0.08),
+    rgba(255, 120, 190, 0.1),
+    rgba(100, 190, 255, 0.08)
+  );
+  filter: blur(90px);
+  animation: pulseGlow 12s ease-in-out infinite;
+}
+
+.auroraNoise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18) 0.5px, transparent 0.8px),
+    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.14) 0.5px, transparent 0.8px),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.14) 0.5px, transparent 0.8px);
+  background-size: 180px 180px, 220px 220px, 200px 200px;
+  mix-blend-mode: soft-light;
+}
+
+@keyframes driftOne {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(8vw, 5vh, 0) scale(1.08);
+  }
+}
+
+@keyframes driftTwo {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(-10vw, 7vh, 0) scale(1.12);
+  }
+}
+
+@keyframes driftThree {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(6vw, -6vh, 0) scale(1.1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.42;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translateX(-50%) scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auroraLayer,
+  .auroraGlow {
+    animation: none;
+  }
+}

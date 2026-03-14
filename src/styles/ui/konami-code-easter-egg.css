@@ -1,10 +1,5 @@
 body.konami-mode {
-  animation: konamiHueShift 8s linear infinite;
-}
-
-body.konami-mode .gradientBackdrop {
-  filter: saturate(1.35) hue-rotate(25deg);
-  transition: filter 300ms ease;
+  animation: none;
 }
 
 body.konami-mode .module,
@@ -12,31 +7,61 @@ body.konami-mode .contactCard,
 body.konami-mode .skillsCard,
 body.konami-mode .projectCard {
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent),
-    0 0 24px color-mix(in srgb, var(--accent) 18%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent),
+    0 0 30px color-mix(in srgb, var(--accent) 24%, transparent);
 }
 
-@keyframes konamiHueShift {
+body.konami-mode .neuralBackdrop__canvas {
+  animation: konamiCanvasRainbow 2.8s linear infinite;
+  filter: saturate(3.2) brightness(1.18) contrast(1.18);
+}
+
+body.konami-mode .neuralBackdrop__veil {
+  opacity: 0.95;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 80, 80, 0.16), transparent 28%),
+    radial-gradient(circle at 80% 25%, rgba(255, 180, 60, 0.14), transparent 24%),
+    radial-gradient(circle at 50% 78%, rgba(80, 220, 120, 0.14), transparent 26%),
+    radial-gradient(circle at 30% 70%, rgba(80, 170, 255, 0.15), transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(180, 100, 255, 0.14), transparent 28%);
+  mix-blend-mode: screen;
+}
+
+body.konami-mode .neuralBackdrop::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 0, 80, 0.18),
+    rgba(255, 140, 0, 0.16),
+    rgba(255, 230, 0, 0.14),
+    rgba(0, 220, 120, 0.16),
+    rgba(0, 170, 255, 0.16),
+    rgba(140, 90, 255, 0.18),
+    rgba(255, 0, 170, 0.16),
+    rgba(255, 0, 80, 0.18)
+  );
+  mix-blend-mode: screen;
+  opacity: 0.42;
+  filter: blur(70px);
+  animation: konamiOverlaySpin 7s linear infinite;
+}
+
+@keyframes konamiCanvasRainbow {
   0% {
-    filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg) saturate(3.2) brightness(1.18) contrast(1.18);
   }
   100% {
-    filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg) saturate(3.2) brightness(1.18) contrast(1.18);
   }
 }
 
-body.theme-catppuccin {
-  --accent: #cba6f7;
-  --text-1: #cdd6f4;
-
-  --surface: #1e1e2e;
-  --surface-strong: #181825;
-
-  --border: #313244;
-}
-
-body.theme-catppuccin .module {
-  box-shadow:
-    0 0 0 1px rgba(203,166,247,0.3),
-    0 0 18px rgba(203,166,247,0.15);
+@keyframes konamiOverlaySpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.05);
+  }
 }
